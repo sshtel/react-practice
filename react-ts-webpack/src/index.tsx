@@ -23,6 +23,20 @@ export default function App(): JSX.Element {
     const newTodos: ITodo[] = [ ... todos, { text, complete: false } ];
     setTodos(newTodos);
   }
+
+  const completeTodo = (index: number): void => {
+    const newTodos: ITodo[] = [ ... todos ];
+    newTodos[index].complete = !newTodos[index].complete;
+    setTodos(newTodos);
+  }
+
+  const removeTodo = (index: number): void => {
+    const newTodos: ITodo[] = [ ... todos ];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+
+  }
+
   return(
     <Fragment>
       <h1> Tody List</h1>
@@ -33,7 +47,16 @@ export default function App(): JSX.Element {
       <section>
         {
           todos.map( (todo: ITodo, index: number) => {
-            return <div key={index}>{todo.text}</div>
+            return (
+              <Fragment key={index}>
+                <div>{todo.text}</div>
+                <button type='button' onClick={() => completeTodo(index)}>
+                  {' '}
+                  {todo.complete ? 'Incomplete': 'Complete'}{' '}
+                </button>
+                <button type='button' onClick={() => removeTodo(index)}>&times;</button>
+              </Fragment>
+            );
           })
         }
       </section>
