@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 import './App.css';
 
 import CardList from './components/card-list/card-list.component';
-// import SearchBox from './components/search-box/search-box.component';
+import SearchBox from './components/search-box/search-box.component';
 
 type AppState = { 
   name: string;
   monsters: any[];
+  searchField: string;
 };
 
 class App extends Component<{}, AppState> {
@@ -16,6 +17,7 @@ class App extends Component<{}, AppState> {
 
     this.state = {
       name: 'No One',
+      searchField: '',
       monsters: [
         {
           name: 'Frankenstein',
@@ -40,6 +42,11 @@ class App extends Component<{}, AppState> {
   }
 
   render() {
+    const { monsters, searchField } = this.state;
+    const filteredMonsters = monsters.filter( monster => {
+      return monster.name.toLowerCase().includes(searchField.toLocaleLowerCase());
+    });
+
     return (
       <div className="App">
         {/* <header className="App-header">
@@ -49,7 +56,9 @@ class App extends Component<{}, AppState> {
         </header> */}
 
         <h1>Monsters Rolodex</h1>
-        {/* <SearchBox onSearchChange={this.onS earchChange as any} /> */}
+
+        <SearchBox></SearchBox>
+
         <CardList monsters={this.state.monsters}>
         </CardList>
 

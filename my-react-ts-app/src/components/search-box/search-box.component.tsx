@@ -13,7 +13,17 @@ import React from 'react';
 //   }
 // }
 
-export const SearchBox = (props: any) => {
-  console.log(props);
-  return <div>{ props.children }</div>
+import './search-box.styles.css'
+
+const SearchBox = (placeholder: string, handleChange: any) => {
+  return (
+    
+    <input className='search'
+      type='search'
+      placeholder={ placeholder }
+      onChange={ handleChange }
+    />
+  );
 }
+
+export default SearchBox;
