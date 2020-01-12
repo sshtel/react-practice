@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import CardList from './components/card-list/card-list.component';
-import SearchBox from './components/search-box/search-box.component';
+import SearchBox  from './components/search-box/search-box.component';
 
 type AppState = { 
   name: string;
@@ -57,9 +57,12 @@ class App extends Component<{}, AppState> {
 
         <h1>Monsters Rolodex</h1>
 
-        <SearchBox></SearchBox>
+        <SearchBox
+          placeholder='search monsters'
+          handleChange = { (e: any) => this.setState({ searchField: e.target.value })}
+        />
 
-        <CardList monsters={this.state.monsters}>
+        <CardList monsters={filteredMonsters}>
         </CardList>
 
       </div>

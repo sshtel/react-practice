@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 // export default class SearchBox extends React.Component {
 //   constructor(props: { onSearchChange: }) {
@@ -14,14 +14,15 @@ import React from 'react';
 // }
 
 import './search-box.styles.css'
+type HandleChange = (event: ChangeEvent<HTMLInputElement>) => void
 
-const SearchBox = (placeholder: string, handleChange: any) => {
+const SearchBox = ( param: { placeholder: string, handleChange: HandleChange }) => {
   return (
     
     <input className='search'
       type='search'
-      placeholder={ placeholder }
-      onChange={ handleChange }
+      placeholder={ param.placeholder }
+      onChange={ param.handleChange }
     />
   );
 }
