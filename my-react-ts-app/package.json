@@ -2,6 +2,7 @@
   "name": "my-react-ts-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sshtel.github.io/react-practice",
   "dependencies": {
     "@types/jest": "24.0.23",
     "@types/node": "12.12.14",
@@ -16,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "npx gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
