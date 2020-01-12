@@ -29,6 +29,7 @@ class App extends Component<{}, AppState> {
         }
       ]
     };
+
   }
 
   componentDidMount() {
@@ -39,6 +40,14 @@ class App extends Component<{}, AppState> {
     .then(users => {
       this.setState( { monsters: users })
     })
+  }
+
+  // handleChange = (e: any) => {
+  //   this.setState({ searchField: e.target.value })
+  // }
+
+  handleChange = (e: any) => { // This should be written in arrow function! because arrow function keeps context of this object
+    this.setState({ searchField: e.target.value })
   }
 
   render() {
@@ -59,7 +68,7 @@ class App extends Component<{}, AppState> {
 
         <SearchBox
           placeholder='search monsters'
-          handleChange = { (e: any) => this.setState({ searchField: e.target.value })}
+          handleChange = {this.handleChange}
         />
 
         <CardList monsters={filteredMonsters}>
